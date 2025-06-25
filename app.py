@@ -3,7 +3,12 @@ contacts = []
 # CHALLENGE - create an add_contact function to add new contacts to the list
 # each contact should be a dictionary with a name and email property
 
-def add_contact():
+def add_contact(name, email):
+  contacts.append({
+    'name': name,
+    'email': email
+  })
+  print(f'Added contact: {name} with email: {email}')
   return
   
 
@@ -12,6 +17,11 @@ def add_contact():
 # if there are no contacts yet, print out a "no contacts yet" message
 
 def list_contacts():
+  if not contacts:
+    print('No contacts yet.')
+    return
+  for contact in contacts:
+    print(f"Name: {contact['name']}, Email: {contact['email']}")
   return
 
 def main():
@@ -24,7 +34,7 @@ def main():
       name = input('New contact name: ')
       email = input('New contact email: ')
 
-      add_contact()
+      add_contact(name, email)
       continue
 
     elif choice == '2':
